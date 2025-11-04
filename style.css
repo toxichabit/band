@@ -1,0 +1,820 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --punk-green: hsl(0, 85%, 55%);
+  --punk-black: hsl(0, 0%, 5%);
+  --punk-white: hsl(0, 0%, 98%);
+  --punk-gray: hsl(0, 0%, 25%);
+  --punk-muted: hsl(0, 0%, 65%);
+  --punk-secondary: hsl(0, 0%, 15%);
+  --punk-border: hsl(0, 0%, 20%);
+  --punk-green: #83ed44;
+  --punk-dark-green: #3d682a;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background: var(--punk-black);
+  color: var(--punk-white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+h1 { font-size: clamp(3rem, 8vw, 6rem); }
+h2 { font-size: clamp(2.5rem, 6vw, 4rem); }
+h3 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  border: 2px solid;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: none;
+}
+
+.btn-primary {
+  background: var(--punk-dark-green);
+  color: var(--punk-white);
+  border-color: var(--punk-black);
+  box-shadow: 4px 4px 0 0 var(--punk-black);
+}
+
+.btn-primary:hover {
+  box-shadow: 2px 2px 0 0 var(--punk-black);
+  transform: translate(2px, 2px);
+}
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: var(--punk-white);
+  border-color: var(--punk-white);
+  box-shadow: 4px 4px 0 0 var(--punk-green);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 2px 2px 0 0 var(--punk-green);
+  transform: translate(2px, 2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--punk-white);
+  border-color: var(--punk-white);
+}
+
+.btn-secondary:hover {
+  background: var(--punk-green);
+  color: var(--punk-black);
+  border-color: var(--punk-green);
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/city.webp');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.4) contrast(1.2);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(227, 42, 42, 0.2) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.hero-badge-inner {
+  border: 4px solid var(--punk-green);
+  padding: 0.5rem 1rem;
+  transform: rotate(-2deg);
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.hero-badge-text {
+  color: var(--punk-green);
+  font-size: 1.125rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+}
+
+.hero-tagline {
+  display: inline-block;
+  margin-bottom: 2rem;
+  transform: rotate(1deg);
+}
+
+.hero-tagline-inner {
+  background: var(--punk-green);
+  padding: 1rem 2rem;
+}
+
+.hero-tagline-text {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 900;
+  color: var(--punk-black);
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+}
+
+.scroll-indicator-inner {
+  width: 1.5rem;
+  height: 2.5rem;
+  border: 2px solid var(--punk-white);
+  border-radius: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.scroll-indicator-dot {
+  width: 0.25rem;
+  height: 0.75rem;
+  background: var(--punk-green);
+  border-radius: 4px;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-10px); }
+  60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* About Section */
+.about {
+  padding: 5rem 2rem;
+  background: var(--punk-black);
+  position: relative;
+  overflow: hidden;
+}
+
+.about::before,
+.about::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.about::before {
+  top: 0;
+  left: 0;
+  width: 16rem;
+  height: 16rem;
+  background: rgba(227, 42, 42, 0.05);
+}
+
+.about::after {
+  bottom: 0;
+  right: 0;
+  width: 24rem;
+  height: 24rem;
+  background: rgba(227, 42, 42, 0.05);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.about-image-wrapper {
+  position: relative;
+}
+
+.about-image-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(61, 104, 42, 0.2);
+  transform: translate(1rem, 1rem);
+}
+
+.about-image {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: auto;
+  border: 4px solid var(--punk-white);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+.about-badge {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  background: var(--punk-green);
+  padding: 0.5rem 1rem;
+  transform: rotate(5deg);
+  z-index: 20;
+}
+
+.about-badge-text {
+  font-weight: 900;
+  color: var(--punk-black);
+  font-size: 0.875rem;
+}
+
+.about-content h2 {
+  margin-bottom: 1.5rem;
+  border-left: 8px solid var(--punk-green);
+  padding-left: 1rem;
+}
+
+.about-text {
+  font-size: 1.125rem;
+  color: var(--punk-muted);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.about-text strong {
+  color: var(--punk-green);
+}
+
+.about-quote {
+  border-left: 4px solid var(--punk-green);
+  padding: 1.5rem;
+  background: rgba(61, 104, 42, 0.05);
+  margin-top: 2rem;
+}
+
+.about-quote-text {
+  font-weight: 900;
+  font-size: 1.25rem;
+  color: var(--punk-white);
+  text-transform: uppercase;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.about-quote-author {
+  font-size: 0.875rem;
+  color: var(--punk-muted);
+}
+
+/* Tour Section */
+.tour {
+  padding: 5rem 2rem;
+  background: var(--punk-secondary);
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title-wrapper {
+  display: inline-block;
+  border: 4px solid var(--punk-green);
+  padding: 1rem 2rem;
+  transform: rotate(-1deg);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  color: var(--punk-muted);
+  font-size: 1.25rem;
+  margin-top: 1rem;
+}
+
+.tour-dates {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tour-show {
+  background: var(--punk-black);
+  border: 2px solid var(--punk-border);
+  padding: 2rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .tour-show {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.tour-show:hover {
+  border-color: var(--punk-green);
+  transform: translateX(0.5rem);
+  box-shadow: 8px 8px 0 0 var(--punk-green);
+}
+
+.tour-show-info {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+@media (min-width: 768px) {
+  .tour-show-info {
+    align-items: center;
+  }
+}
+
+.tour-date {
+  text-align: center;
+  min-width: 80px;
+}
+
+.tour-date-day {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--punk-green);
+}
+
+.tour-date-year {
+  font-size: 0.875rem;
+  color: var(--punk-muted);
+  font-weight: 700;
+}
+
+.tour-venue h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.tour-show:hover .tour-venue h3 {
+  color: var(--punk-green);
+}
+
+.tour-location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--punk-muted);
+}
+
+.tour-cta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.tour-status {
+  font-size: 0.875rem;
+  font-weight: 900;
+  padding: 0.5rem 1rem;
+}
+
+.tour-status-sale {
+  background: var(--punk-secondary);
+  color: var(--punk-white);
+}
+
+.tour-status-hot {
+  background: var(--punk-green);
+  color: var(--punk-black);
+}
+
+.tour-all {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* Music Section */
+.music {
+  padding: 5rem 2rem;
+  background: var(--punk-black);
+}
+
+.music-albums {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto 4rem;
+}
+
+.album-card {
+  position: relative;
+  background: var(--punk-secondary);
+  border: 4px solid var(--punk-border);
+  padding: 2rem;
+  transition: all 0.3s ease;
+  max-width: 360px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.album-card:hover {
+  border-color: var(--punk-green);
+  transform: translateY(-0.5rem);
+}
+
+.album-badge {
+  position: absolute;
+  top: -0.75rem;
+  right: -0.75rem;
+  background: var(--punk-green);
+  padding: 0.25rem 0.75rem;
+  transform: rotate(5deg);
+}
+
+.album-badge-text {
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: var(--punk-black);
+}
+
+.album-vinyl {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.vinyl-icon {
+  width: 8rem;
+  height: 8rem;
+  margin: 0 auto;
+  position: relative;
+  transition: transform 0.7s ease;
+}
+
+.album-card:hover .vinyl-icon {
+  transform: rotate(180deg);
+}
+
+.vinyl-svg {
+  width: 100%;
+  height: 100%;
+  color: var(--punk-green);
+}
+
+.vinyl-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2rem;
+  height: 2rem;
+  background: var(--punk-black);
+  border: 2px solid var(--punk-green);
+  border-radius: 50%;
+}
+
+.album-info {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.album-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--punk-white);
+  margin-bottom: 0.5rem;
+}
+
+.album-meta {
+  color: var(--punk-muted);
+}
+
+.album-btn {
+  width: 100%;
+}
+
+.music-platforms {
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.platforms-title {
+  color: var(--punk-muted);
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.platforms-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Contact Section */
+.contact {
+  padding: 5rem 2rem;
+  background: var(--punk-secondary);
+}
+
+.contact-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-email {
+  margin-bottom: 4rem;
+}
+
+.contact-email-box {
+  display: inline-block;
+  background: var(--punk-black);
+  border: 4px solid var(--punk-green);
+  padding: 2rem;
+  transform: rotate(-1deg);
+  transition: transform 0.3s ease;
+}
+
+.contact-email-box:hover {
+  transform: rotate(0deg);
+}
+
+.email-icon {
+  width: 3rem;
+  height: 3rem;
+  color: var(--punk-green);
+  margin: 0 auto 1rem;
+}
+
+.email-address {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--punk-white);
+  margin-bottom: 1rem;
+}
+
+.social-title {
+  font-size: 1.125rem;
+  font-weight: 900;
+  color: var(--punk-white);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.social-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.social-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--punk-black);
+  border: 2px solid var(--punk-border);
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  border-color: var(--punk-green);
+  transform: translateY(-0.25rem);
+}
+
+.social-icon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--punk-muted);
+  transition: color 0.3s ease;
+}
+
+.social-link:hover .social-icon {
+  color: var(--punk-green);
+}
+
+.social-handle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--punk-muted);
+  transition: color 0.3s ease;
+}
+
+.social-link:hover .social-handle {
+  color: var(--punk-green);
+}
+
+.newsletter {
+  padding: 2rem;
+  background: var(--punk-green);
+}
+
+.newsletter h3 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--punk-black);
+  margin-bottom: 1rem;
+}
+
+.newsletter p {
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 1.5rem;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .newsletter-form {
+    flex-direction: row;
+  }
+}
+
+.newsletter-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: var(--punk-black);
+  color: var(--punk-white);
+  border: 2px solid var(--punk-black);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.newsletter-input::placeholder {
+  color: var(--punk-muted);
+}
+
+.newsletter-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--punk-black);
+}
+
+.newsletter-btn {
+  background: var(--punk-black);
+  color: var(--punk-green);
+  border-color: var(--punk-black);
+}
+
+.newsletter-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+/* Footer */
+.footer {
+  background: var(--punk-black);
+  border-top: 4px solid var(--punk-green);
+  padding: 3rem 2rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-brand h3 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--punk-green);
+  margin-bottom: 1rem;
+}
+
+.footer-brand p {
+  color: var(--punk-muted);
+}
+
+.footer-section h4 {
+  font-size: 1.125rem;
+  font-weight: 900;
+  color: var(--punk-white);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  color: var(--punk-muted);
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--punk-green);
+}
+
+.footer-bottom {
+  padding-top: 2rem;
+  border-top: 2px solid var(--punk-border);
+  text-align: center;
+}
+
+.footer-copyright {
+  color: var(--punk-muted);
+  font-weight: 700;
+}
+
+.footer-copyright .highlight {
+  color: var(--punk-green);
+  margin-left: 0.5rem;
+}
+
+/* Icons (using SVG) */
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: inline-block;
+  vertical-align: middle;
+}
