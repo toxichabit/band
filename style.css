@@ -62,6 +62,11 @@ a {
   color: var(--punk-white);
   border-color: var(--punk-black);
   box-shadow: 4px 4px 0 0 var(--punk-black);
+  padding: 0;
+
+  a {
+    padding: 1rem 2rem;
+  }
 }
 
 .btn-primary:hover {
@@ -476,6 +481,16 @@ a {
   margin: 0 auto 4rem;
 }
 
+.album-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+
 .album-card {
   position: relative;
   background: var(--punk-secondary);
@@ -485,6 +500,7 @@ a {
   max-width: 360px;
   margin: 0 auto;
   width: 100%;
+  margin-bottom: 2rem;
 }
 
 .album-card:hover {
