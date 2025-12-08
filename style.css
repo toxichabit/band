@@ -576,6 +576,11 @@ a {
 
 .album-btn {
   width: 100%;
+  margin-bottom: 1rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 .music-platforms {
